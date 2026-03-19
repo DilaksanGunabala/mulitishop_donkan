@@ -92,7 +92,7 @@ export default function BulkUpload() {
         <p className="font-semibold mb-2">CSV Format</p>
         <p>Required columns: <code className="bg-blue-100 px-1 rounded">name, price, category</code></p>
         <p>Optional columns: <code className="bg-blue-100 px-1 rounded">description, featured</code></p>
-        <p className="mt-1">Categories: <code className="bg-blue-100 px-1 rounded">Fancy, Stationary, Others</code></p>
+        <p className="mt-1">Categories: <code className="bg-blue-100 px-1 rounded">Fancy, Stationary, Baby Needs, Plastic Items, Others</code></p>
       </div>
 
       {/* File upload */}

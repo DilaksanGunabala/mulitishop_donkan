@@ -4,7 +4,7 @@ import { addProduct } from '../../services/productService';
 import ImageUploader from '../../components/ImageUploader';
 import { toast } from 'react-toastify';
 
-const CATEGORIES = ['Fancy', 'Stationary', 'Others'];
+const CATEGORIES = ['Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'];
 
 export default function AddProduct() {
   const navigate = useNavigate();

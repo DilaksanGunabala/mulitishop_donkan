@@ -4,7 +4,7 @@ import { FiPackage, FiPlusCircle, FiUploadCloud } from 'react-icons/fi';
 import { getProducts } from '../../services/productService';
 import AdminAnalytics from '../../components/AdminAnalytics';
 
-const CATEGORIES = ['Fancy', 'Stationary', 'Others'];
+const CATEGORIES = ['Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'];
 
 export default function AdminDashboard() {
   const [products, setProducts] = useState([]);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CATEGORIES = ['All', 'Fancy', 'Stationary', 'Others'];
+const CATEGORIES = ['All', 'Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'];
 
 export default function CategoryFilter({ selected, onChange }) {
   return (

@@ -27,9 +27,9 @@ export default function Home() {
     <>
       <Helmet>
         <title>New Multi Shop — Quality Products Online</title>
-        <meta name="description" content="Shop the best fancy items, stationery, and more at New Multi Shop." />
+        <meta name="description" content="Shop the best fancy items, stationery, baby needs, plastic items, and more at New Multi Shop." />
         <meta property="og:title" content="New Multi Shop — Quality Products Online" />
-        <meta property="og:description" content="Shop the best fancy items, stationery, and more at New Multi Shop." />
+        <meta property="og:description" content="Shop the best fancy items, stationery, baby needs, plastic items, and more at New Multi Shop." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -47,7 +47,7 @@ export default function Home() {
             <span className="text-teal-600">All in One Place</span>
           </h1>
           <p className="text-gray-500 text-lg max-w-lg leading-relaxed">
-            Fancy items, stationery, gifts &amp; more — carefully curated for everyday joy.
+            Fancy items, stationery, baby needs, plastic items &amp; more — carefully curated for everyday joy.
           </p>
           <div className="flex gap-3 flex-wrap justify-center mt-1">
             <Link
@@ -69,7 +69,7 @@ export default function Home() {
       {/* Category chips */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2">
         <div className="flex flex-wrap gap-3 justify-center">
-          {['Fancy', 'Stationary', 'Others'].map((cat) => (
+          {['Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'].map((cat) => (
             <Link
               key={cat}
               to={`/products?category=${cat}`}

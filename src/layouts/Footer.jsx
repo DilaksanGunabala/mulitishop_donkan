@@ -33,6 +33,8 @@ export default function Footer() {
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/products?category=Fancy" className="hover:text-teal-400 transition-colors">Fancy</Link></li>
             <li><Link to="/products?category=Stationary" className="hover:text-teal-400 transition-colors">Stationary</Link></li>
+            <li><Link to="/products?category=Baby Needs" className="hover:text-teal-400 transition-colors">Baby Needs</Link></li>
+            <li><Link to="/products?category=Plastic Items" className="hover:text-teal-400 transition-colors">Plastic Items</Link></li>
             <li><Link to="/products?category=Others" className="hover:text-teal-400 transition-colors">Others</Link></li>
           </ul>
         </div>

@@ -15,7 +15,7 @@ export default function Products() {
     <>
       <Helmet>
         <title>Products — New Multi Shop</title>
-        <meta name="description" content="Browse all products at New Multi Shop — fancy items, stationery, and more." />
+        <meta name="description" content="Browse all products at New Multi Shop — fancy items, stationery, baby needs, plastic items, and more." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
