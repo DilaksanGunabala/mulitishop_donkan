@@ -80,15 +80,23 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen((v) => !v)}
             className="md:hidden p-2 text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
           >
             {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-3 space-y-1">
+      {/* Mobile menu — smooth slide-down with opacity fade */}
+      <div
+        id="mobile-nav"
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <nav className="bg-white border-t border-gray-100 px-4 py-3 space-y-1">
           {navLinks.map(({ to, label, end }) => (
             <NavLink
               key={to}
@@ -106,8 +114,8 @@ export default function Navbar() {
               {label}
             </NavLink>
           ))}
-        </div>
-      )}
+        </nav>
+      </div>
     </header>
   );
 }
