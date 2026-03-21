@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '919999999999';
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '94762606990';
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${WHATSAPP_NUMBER}`;
