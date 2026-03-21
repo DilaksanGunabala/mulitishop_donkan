@@ -3,6 +3,20 @@ import { useNavigate } from 'react-router-dom';
 import { addProduct } from '../../services/productService';
 import ImageUploader from '../../components/ImageUploader';
 import { toast } from 'react-toastify';
+import { uploadImageToCloudinary } from "../../utils/cloudinary";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase";
+
+const handleUpload = async (e) => {
+  const file = e.target.files[0];
+
+  const imageUrl = await uploadImageToCloudinary(file);
+
+  await addDoc(collection(db, "products"), {
+    name: "Product",
+    image: imageUrl,
+  });
+};
 
 const CATEGORIES = ['Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'];
 
@@ -44,8 +58,8 @@ export default function AddProduct() {
   const saving = status !== 'idle' && status !== 'done';
   const btnLabel =
     status === 'uploading' ? 'Uploading images…' :
-    status === 'saving'    ? 'Saving…' :
-                             'Add Product';
+      status === 'saving' ? 'Saving…' :
+        'Add Product';
 
   return (
     <div className="max-w-2xl space-y-6">
@@ -109,7 +123,7 @@ export default function AddProduct() {
           <FormField label="Images">
             <ImageUploader
               onNewFiles={setImageFiles}
-              onRemoveExisting={() => {}}
+              onRemoveExisting={() => { }}
             />
           </FormField>
 
