@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-gray-700 text-center py-4 text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} New Multi Shop. All rights reserved.
+        &copy; {new Date().getFullYear()} New Multi Shop. All rights reserved. Created By codeglofix.pvt.ltd
       </div>
     </footer>
   );
