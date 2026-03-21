@@ -3,20 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { addProduct } from '../../services/productService';
 import ImageUploader from '../../components/ImageUploader';
 import { toast } from 'react-toastify';
-import { uploadImageToCloudinary } from "../../utils/cloudinary";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase";
-
-const handleUpload = async (e) => {
-  const file = e.target.files[0];
-
-  const imageUrl = await uploadImageToCloudinary(file);
-
-  await addDoc(collection(db, "products"), {
-    name: "Product",
-    image: imageUrl,
-  });
-};
 
 const CATEGORIES = ['Fancy', 'Stationary', 'Baby Needs', 'Plastic Items', 'Others'];
 

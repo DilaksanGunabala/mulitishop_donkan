@@ -11,9 +11,9 @@ import {
   limit,
   serverTimestamp,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from '../firebase';
+import { db } from '../firebase';
 import { slugify } from '../utils/slugify';
+import { uploadImageToCloudinary } from '../utils/cloudinary';
 
 const COLLECTION = 'products';
 
@@ -92,56 +92,19 @@ export async function getProductById(id) {
   return { id: snap.id, ...snap.data() };
 }
 
-// Skip compression for small files; compress large ones to max 900px / 75% JPEG
-function compressImage(file, maxPx = 900, quality = 0.75) {
-  // Already small enough — upload as-is
-  if (file.size < 300 * 1024) return Promise.resolve(file);
-
-  return new Promise((resolve) => {
-    // Safety timeout — if canvas.toBlob never fires, fall back to original file
-    const timeout = setTimeout(() => resolve(file), 8000);
-    const done = (result) => { clearTimeout(timeout); resolve(result); };
-
-    const img = new Image();
-    const url = URL.createObjectURL(file);
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      let { width, height } = img;
-      if (width > maxPx || height > maxPx) {
-        if (width > height) { height = Math.round((height * maxPx) / width); width = maxPx; }
-        else { width = Math.round((width * maxPx) / height); height = maxPx; }
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-      canvas.toBlob((blob) => done(blob || file), 'image/jpeg', quality);
-    };
-    img.onerror = () => { URL.revokeObjectURL(url); done(file); };
-    img.src = url;
-  });
-}
-
-export async function uploadImages(files, productId) {
-  const uploads = files.map(async (file) => {
-    const compressed = await compressImage(file);
-    const name = `${Date.now()}_${file.name.replace(/\.[^.]+$/, '.jpg')}`;
-    const storageRef = ref(storage, `products/${productId}/${name}`);
-    await uploadBytes(storageRef, compressed, { contentType: 'image/jpeg' });
-    return getDownloadURL(storageRef);
-  });
-  return Promise.all(uploads);
+// Upload all files to Cloudinary in parallel and return their URLs
+export async function uploadImages(files) {
+  return Promise.all(files.map((file) => uploadImageToCloudinary(file)));
 }
 
 export async function addProduct(data, imageFiles) {
   const slug = slugify(data.name);
-  // Pre-generate the doc ID so we can upload images and write in ONE Firestore call
   const docRef = doc(collection(db, COLLECTION));
 
-  // Upload images first (parallel), then single write
+  // Upload images to Cloudinary in parallel, then save URLs to Firestore
   const images =
     imageFiles && imageFiles.length > 0
-      ? await uploadImages(imageFiles, docRef.id)
+      ? await uploadImages(imageFiles)
       : [];
 
   await setDoc(docRef, {
@@ -159,15 +122,13 @@ export async function updateProduct(id, data, newImageFiles, removedImageUrls = 
   const docRef = doc(db, COLLECTION, id);
   let images = data.images || [];
 
-  // Delete removed images
-  await Promise.allSettled(
-    removedImageUrls.map((url) => deleteObject(ref(storage, url)))
-  );
+  // Remove deleted image URLs from Firestore record
+  // (Cloudinary deletion requires a server-side API secret — URLs are simply dropped)
   images = images.filter((img) => !removedImageUrls.includes(img));
 
-  // Upload new images in parallel
+  // Upload new images to Cloudinary in parallel
   if (newImageFiles && newImageFiles.length > 0) {
-    const newUrls = await uploadImages(newImageFiles, id);
+    const newUrls = await uploadImages(newImageFiles);
     images = [...images, ...newUrls];
   }
 
