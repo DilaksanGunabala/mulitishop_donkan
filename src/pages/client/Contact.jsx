@@ -3,9 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiPhone, FiMail } from 'react-icons/fi';
 
-const WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMBER || '919999999999';
-const PHONE = import.meta.env.VITE_PHONE_NUMBER || '+91 9999999999';
-const EMAIL = import.meta.env.VITE_EMAIL_ADDRESS || 'hello@newmultishop.com';
+const WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMBER || '94762606990';
+const PHONE = import.meta.env.VITE_PHONE_NUMBER || '+94762606990';
+const EMAIL = import.meta.env.VITE_EMAIL_ADDRESS || 'gunabaladilaksan1999@gmail.com.com';
 
 export default function Contact() {
   return (
