@@ -5,7 +5,7 @@ import { FiTrash2, FiPlus, FiMinus, FiShoppingBag } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { useCart } from '../../context/CartContext';
 
-const WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMBER || '919999999999';
+const WHATSAPP = import.meta.env.VITE_WHATSAPP_NUMBER || '94762606990';
 
 export default function CartPage() {
   const { items, cartTotal, updateQty, removeFromCart, clearCart } = useCart();
