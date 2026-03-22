@@ -35,7 +35,7 @@ export default function ProductCard({ product }) {
             {name}
           </h3>
           <p className="text-teal-700 font-bold text-xs sm:text-sm md:text-base mb-2">
-            ₹{Number(price).toLocaleString('en-IN')}
+          Rs.{Number(price).toLocaleString('en-IN')}
           </p>
         </div>
         <Link

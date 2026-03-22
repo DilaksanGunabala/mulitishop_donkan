@@ -89,7 +89,7 @@ export default function EditProduct() {
             />
           </FormField>
 
-          <FormField label="Price (₹) *">
+          <FormField label="Price (Rs.) *">
             <input
               name="price"
               type="number"

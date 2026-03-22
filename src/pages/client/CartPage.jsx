@@ -14,9 +14,9 @@ export default function CartPage() {
     if (items.length === 0) return '';
     const lines = items.map(
       (item) =>
-        `• ${item.name} x${item.qty} = ₹${(item.price * item.qty).toLocaleString('en-IN')}`
+        `• ${item.name} x${item.qty} = Rs.${(item.price * item.qty).toLocaleString('en-IN')}`
     );
-    lines.push(`\n*Total: ₹${cartTotal.toLocaleString('en-IN')}*`);
+    lines.push(`\n*Total: Rs.${cartTotal.toLocaleString('en-IN')}*`);
     return encodeURIComponent(`Hi! I'd like to order:\n\n${lines.join('\n')}`);
   };
 
@@ -53,7 +53,7 @@ export default function CartPage() {
                   />
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-gray-800 truncate">{item.name}</p>
-                    <p className="text-blue-600 font-bold">₹{Number(item.price).toLocaleString('en-IN')}</p>
+                    <p className="text-blue-600 font-bold">Rs.{Number(item.price).toLocaleString('en-IN')}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <button
@@ -71,7 +71,7 @@ export default function CartPage() {
                     </button>
                   </div>
                   <p className="font-bold text-gray-700 w-24 text-right">
-                    ₹{(item.price * item.qty).toLocaleString('en-IN')}
+                    Rs.{(item.price * item.qty).toLocaleString('en-IN')}
                   </p>
                   <button
                     onClick={() => removeFromCart(item.id)}
@@ -98,14 +98,14 @@ export default function CartPage() {
                   {items.map((item) => (
                     <div key={item.id} className="flex justify-between">
                       <span className="truncate mr-2">{item.name} x{item.qty}</span>
-                      <span className="flex-shrink-0">₹{(item.price * item.qty).toLocaleString('en-IN')}</span>
+                       <span className="flex-shrink-0">Rs.{(item.price * item.qty).toLocaleString('en-IN')}</span>
                     </div>
                   ))}
                 </div>
                 <hr />
                 <div className="flex justify-between font-bold text-gray-800 text-lg">
                   <span>Total</span>
-                  <span>₹{cartTotal.toLocaleString('en-IN')}</span>
+                  <span>Rs.{cartTotal.toLocaleString('en-IN')}</span>
                 </div>
 
                 <a

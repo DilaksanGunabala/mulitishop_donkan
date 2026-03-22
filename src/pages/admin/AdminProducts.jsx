@@ -115,7 +115,7 @@ export default function AdminProducts() {
                       </span>
                     </td>
                     <td className="px-4 py-3 text-gray-700 whitespace-nowrap">
-                      ₹{Number(product.price).toLocaleString('en-IN')}
+                       Rs.{Number(product.price).toLocaleString('en-IN')}
                     </td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-2">

@@ -62,7 +62,7 @@ export default function AddProduct() {
             />
           </FormField>
 
-          <FormField label="Price (₹) *">
+          <FormField label="Price (Rs.) *">
             <input
               name="price"
               type="number"

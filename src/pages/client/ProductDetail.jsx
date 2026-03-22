@@ -96,7 +96,7 @@ export default function ProductDetail() {
             )}
             <h1 className="text-3xl font-bold text-gray-900">{name}</h1>
             <p className="text-3xl font-extrabold text-blue-600">
-              ₹{Number(price).toLocaleString('en-IN')}
+              Rs.{Number(price).toLocaleString('en-IN')}
             </p>
 
             {description && (

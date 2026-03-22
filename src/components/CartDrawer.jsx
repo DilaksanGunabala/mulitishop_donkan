@@ -56,7 +56,7 @@ export default function CartDrawer() {
                 <div className="flex-1 min-w-0">
                   <p className="font-medium text-gray-800 text-sm truncate">{item.name}</p>
                   <p className="text-blue-600 text-sm font-semibold">
-                    ₹{Number(item.price).toLocaleString('en-IN')}
+                    Rs.{Number(item.price).toLocaleString('en-IN')}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
                     <button
@@ -90,7 +90,7 @@ export default function CartDrawer() {
           <div className="px-5 py-4 border-t space-y-3">
             <div className="flex justify-between font-semibold text-gray-800">
               <span>Total</span>
-              <span>₹{cartTotal.toLocaleString('en-IN')}</span>
+              <span>Rs.{cartTotal.toLocaleString('en-IN')}</span>
             </div>
             <Link
               to="/cart"

@@ -140,7 +140,7 @@ export default function BulkUpload() {
                   {rows.slice(0, 5).map((row, i) => (
                     <tr key={i}>
                       <td className="px-3 py-2 max-w-[150px] truncate">{row.name}</td>
-                      <td className="px-3 py-2">₹{row.price}</td>
+                      <td className="px-3 py-2">Rs.{row.price}</td>
                       <td className="px-3 py-2">{row.category}</td>
                       <td className="px-3 py-2 max-w-[200px] truncate">{row.description}</td>
                     </tr>
