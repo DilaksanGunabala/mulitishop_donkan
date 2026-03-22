@@ -49,7 +49,7 @@ export default function Products() {
         ) : (
           <>
             <p className="text-sm text-gray-500 mb-4">{products.length} product{products.length !== 1 ? 's' : ''} found</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
